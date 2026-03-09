@@ -1,0 +1,30 @@
+sin(2x)
+| M   | MAE      |
+| --- | -------- |
+| 2   | 0.5665   |
+| 10  | 0.0131   |
+| 25  | 0.00225  |
+| 50  | 0.000885 |
+| 63  | 0.000668 |
+| 75  | 0.000937 |
+| 100 | 0.00730  |
+
+square(2x)
+| M   | MAE       |
+| --- | --------- |
+| 2   | 0.8350    |
+| 10  | 0.2758    |
+| 25  | 0.1512    |
+| 50  | 0.0935    |
+| 63  | 27.0536 ⚠ |
+| 75  | 0.1042    |
+| 100 | 0.0851    |
+
+1- For sin(2x), approximately 10 units are required to get an absolute residual error below 0.1, 25 units for 0.01, 50 for 0.001.
+For the square(2x) function, significantly more units are required, approximately 50 to get an error below 0.1. However, the errors of 
+0.01, and 0.001 were not achieved even with larger number of units. Furthermore, when the number of units approaches the number of training samples, 
+numerical instability seems to appear, increasing the error dramatically. This reflects overfitting and poor generalization near discontinuities. 
+
+2- We can apply a hard threshold to map the continuous RBF output to ±1. Doing this, the smallest number of units that achieve perfect 
+classification is 80. This could be useful for binary classification.
+
